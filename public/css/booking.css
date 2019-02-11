@@ -1,0 +1,609 @@
+.booking-body
+{
+    Border:1px solid red;
+    margin-top:5em;
+
+}
+.booking-input
+{
+    Border:1px solid green;
+    width:50%;
+    margin-left:25%;
+    margin-right:25%;
+}
+
+
+/*calendar v1*/
+
+.month {
+    padding: .5em .5em;
+    width: 100%;
+    text-align: center;
+  }
+  
+  .month ul {
+    margin: 0;
+    padding: 0;
+    display:flex;
+    align-items: center;
+    width:100%;
+    border:1px solid red;
+  }
+  
+  .month ul li {
+    font-size: 1em;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    border:1px solid red;
+    margin:0 .5em;
+  }  
+  .month .genric-btn{
+    padding: 0 15px !important;
+    font-size:1em;
+  } 
+  .weekdays {
+    margin: 0;
+    padding: 10px 0;
+    /* background-color: #ddd; */
+  }
+  
+  .weekdays li {
+    display: inline-block;
+    width: 13.6%;
+    color: #666;
+    text-align: center;
+  }
+  
+  .days {
+    padding: 10px 0;
+    margin: 0;
+  }
+  
+  .days li {
+    list-style-type: none;
+    display: inline-block;
+    width: 13.6%;
+    text-align: center;
+    min-height:1em;
+    line-height:3em;
+    /* margin-bottom: 5px; */
+    font-size:1.2em ;
+    color: #777;
+    border: 1px solid transparent;
+  }
+  
+  .days li div {
+    background: transparent;
+    line-height: 45px;
+    width:45px;
+    height:45px;
+    color: black;
+    border-radius:50%;
+    margin:auto;
+    cursor: pointer;
+  }
+ .days li .active {
+   background: purple;
+  }
+  .days li div:hover
+  {
+    color:blue;
+  }
+
+.pick-date
+{
+
+}
+  .pick-time  .input-range
+  {
+    border: 1px solid red;
+    display: flex;
+    flex-direction: column;
+    width:100%;
+    align-items:stretch;
+  }
+  .pick-time .input-range input
+  {
+    border: 1px solid red;
+    width:100%;
+  }
+/*Make range slider invisible*/
+
+/*Make range slider invisible*/
+
+
+  #range-slider::-moz-range-thumb {
+    /* box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d; */
+    border: 1px solid rgb(244, 47, 44);
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+    background: rgb(244, 47, 44);
+    cursor: pointer;
+  }
+  #range-slider::-moz-range-track {
+    width: 100%;
+    height: .15em;
+    cursor: pointer;
+    background:#666;
+    border-radius: 3px;
+  }
+
+  .pick-time  .input-range output
+  {
+   font-size:3em;
+    line-height:1em;
+  }
+
+  /*confirm booking*/
+  .des-data
+  {
+   border:1px solid  #666; 
+   margin-top:.5em;
+  }
+
+  .des-data p
+  {
+    margin:0;
+    font-weight:500;
+
+  } 
+  .des-data h4
+  {
+    margin:0;
+  } 
+  .des-data  .confirm-btn
+  {
+    Text-Transform:uppercase;
+    font-weight:600;
+    font-size:1.1em !important;
+    padding-top:1px;
+    padding-bottom:1px;
+    padding-left:15px;
+    padding-right:15px;
+    margin-top:.5em;
+  }
+
+  /*confirm booking*/
+
+  /*Move to dashboard*/
+  .select-content
+  {
+    
+  }
+  .select-content .filter-food
+  {
+    border: 1px solid blue;
+  }
+  .select-content .content-food
+  {
+    /* border: 1px solid cyan; */
+    padding-top:1em;
+  }
+  /*Move to dashboard*/
+
+  /*booking content*/
+  .booking-content
+  {
+
+  }
+  .booking-content .button-container .genric-btn
+  {
+    margin-top:.5em;
+    margin-bottom:.5em;
+    font-size:1.2em;
+    width:100%;
+  }
+  .booking-content  .title
+  {
+    border:1px solid red;
+  }
+  .booking-content .message
+  {
+    line-height:1.5em;
+    font-size:1.1em;
+    font-weight:400;
+    /* font-kerning:auto; */
+    /* letter-spacing: 1px; */
+    margin:0;
+  }
+/*booking content*/
+
+
+/*checked hamb*/
+
+#mobile-nav-toggle .hamb:checked ~ span
+{
+  opacity: 1;
+  transform: rotate(45deg) translate(-8px, -20px);
+  background: rgba(34,34,34,0.9);
+}
+#mobile-nav-toggle .hamb:checked ~ span.header-scrolled
+{ 
+  transition: all 0.5s;
+  background: #cdcdcd !important;
+}
+#mobile-nav-toggle .hamb:checked ~ span:nth-last-child(3)
+{
+  opacity: 0;
+  transform: rotate(0deg) scale(0.2, 0.2);
+}
+#mobile-nav-toggle .hamb:checked ~ span:nth-last-child(2)
+{
+  transform: rotate(-45deg) translate(0, 9px);
+}
+
+#mobile-nav-toggle .hamb:checked ~ ul
+{
+  transform: none;
+}
+#mobile-nav-toggle .hamb
+{
+  display: block;
+  width: 40px;
+  height: 32px;
+  position: absolute;
+  top: -7px;
+  left: -5px;
+  
+  cursor: pointer;
+  
+  opacity: 0; /* hide this */
+  z-index: 2; /* and place it over the hamburger */
+  
+  -webkit-touch-callout: none;
+}
+#mobile-nav-toggle span
+{
+  display: block;
+  width: 33px;
+  height: 4px;
+  margin-bottom: 5px;
+  position: relative;
+  background: #232323;
+  
+  border-radius: 3px;
+  
+  z-index: 1;
+  
+  transform-origin: 4px 0px;
+  
+  transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+              background 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+              opacity 0.55s ease;
+}
+#mobile-nav-toggle span.header-scrolled
+{ 
+  transition: all 0.5s;
+  background: #cdcdcd;
+}
+
+/*checked hamb*/
+.profile-edit 
+{
+  Border:1px solid red;
+  margin-top:.2em;
+}
+.profile-edit > .img-section
+{
+  /* display:flex;
+  align-items:center; */
+}
+.profile-edit > .img-section p
+{
+  font-size:.9em;
+  font-weight:400;
+  position:relative;
+  top:.5em;
+}
+.profile-edit > .img-section > img
+{
+  border-radius:50%;
+}
+
+.profile-edit > .text-body
+{
+  Border:1px solid red;
+  /* display:flex; */
+  line-height:1em;
+}
+.profile-edit > .text-body .text-index
+{
+
+}
+.profile-edit >.text-body .text-content
+{
+  display:flex;
+  align-items:center;
+  margin-top:.5em;
+  margin-bottom:.5em;
+}
+
+.profile-edit > .text-body > section
+{
+  float:left;
+  /* width:60%!important; */
+  Border:1px solid;
+  overflow:hidden;
+}
+.profile-edit > .text-body .text-content >.genric-btn
+{
+  padding:0;
+  line-height: 1em;
+  padding:.5em;
+  font-weight:600;
+
+  text-transform: uppercase;
+  margin-left:.6em;
+}
+.profile-edit > .text-body >.genric-btn
+{
+  float:right;
+  line-height: 1em;
+  padding-top:.8em;
+  padding-bottom:.8em;
+  padding-left:1em;
+  padding-right:1em;
+  font-weight:600;
+  font-size:1.08em;
+  text-transform: uppercase;
+  position:relative;
+  top:.6em;
+}
+.save-btn > .genric-btn
+{
+  line-height: 1em;
+  padding-top:.8em;
+  padding-bottom:.8em;
+  padding-left:1em;
+  padding-right:1em;
+  font-weight:600;
+  font-size:1.08em;
+  text-transform: uppercase;
+  width:100%;
+}
+/**/
+
+/*Order Info*/
+.order-body
+{
+
+}
+.order-body > .progress-line-body
+{
+  border: 1px solid transparent;
+
+
+  /* background-color: white; */
+}
+.progress-line-body > .progress-text
+{
+  font-weight:500;
+  width:10px;
+
+}
+.progress-line-body > .progress-circle
+{
+  background-color:blue;
+}
+.progress-line-body > .progress-line
+{
+  stroke:black;
+  stroke-width:3px;
+}
+.Order-detail
+{
+  width:80%;
+}
+.Order-detail > .tabs-body
+{
+  display:flex;
+  margin-top:.3em;
+}
+.Order-detail >.Order-detail-food
+{
+
+}
+.detail-food-list > li
+{
+  display:flex;
+  align-items: center;
+  width:100%;
+}
+.detail-food-list > li > .img-fluid
+{
+  width:auto;
+  height:125px;
+}
+.detail-food-list > li > div
+{
+  Border:1px solid red;
+}
+.detail-food-list > li > div > *
+{
+  margin:0;
+}
+.detail-food-list > li > .total-item
+{
+  Border:1px solid red;
+  font-size:1.5em;
+  padding:0 .5em;
+  margin:0;
+  font-weight:600;
+}
+.detail-food-list > li > .total-cost
+{
+  Border:1px solid red;
+  padding:0 .5em;
+  font-weight:500;
+  margin:0;
+}
+.detail-food-list > .total-cost-recipt
+{
+  overflow: hidden;
+  display:block;
+  
+}
+.detail-food-list > .total-cost-recipt > .title
+{ 
+  color:black;
+  font-weight:600;
+  float:left;
+  font-size:1.3em;
+  padding-top:.5em;
+  padding-bottom:1em;
+  Border:1px solid red;
+}
+.detail-food-list > .total-cost-recipt > .number
+{ color:black;
+  font-weight:500;
+  font-size:1.3em;
+  padding-top:.5em;
+  padding-bottom:1em;
+  float:right;
+  Border:1px solid red;
+}
+
+.Order-detail-corier
+{
+  display: flex;
+  flex-wrap: wrap;
+  margin-top:.5em;
+  display:block;
+  height:auto;
+}
+.Order-detail-corier > .driver-info
+{
+
+  
+}
+.Order-detail-corier > .driver-info > ul >li
+{
+  
+}
+.driver-info > ul >li >p
+{
+  margin:0;
+  
+}
+
+
+.Order-detail-corier > .driver-info > img
+{
+  border-radius:50%;
+}
+.Order-detail-corier > .maps
+{
+
+  padding-left:0;
+}
+
+/*Tabs*/
+.tabs
+{
+  Border-bottom:1px solid rgb(230, 230, 230);
+  line-height:2.9em;
+}
+.tabs > .button
+{
+  
+  font-size:1.1em;
+  font-weight:500;
+
+  padding:.6em 2em;
+  cursor: pointer;
+}
+.tabs >.act-btn
+{
+  border-bottom:2px solid #f42f2c;
+}
+/*Tabs*/
+.order-log > .boxes
+{
+  display:table;
+}
+.order-log > .boxes > .box {
+  display: table-cell;
+  text-align: center;
+  vertical-align:middle;
+  line-height: 3em;
+  Border:1px solid transparent;
+  padding-left:2px;
+  padding-right:2px;
+}
+.order-log > .boxes > .box > .icon {
+  border:1px solid red;
+  border-radius: 3px;
+  padding:.3em;
+  font-size:.9em;
+}
+.order-log > .boxes > .box > .info {
+  font-weight:300;
+}
+.order-log > .boxes > .box > .timestamp {
+  font-weight:500;
+}
+@media (max-width: 780px) {
+  .order-log > .boxes > .box {
+      display: block;
+      text-align: unset;
+      width: 100%;
+  }
+}
+.finish-order-button
+{
+margin-top:.5em;
+}
+/*Order Info*/
+
+/*test search menu*/
+.test-search-menu
+{
+  margin-left:-15px;
+  margin-right:-15px;
+}
+.input-box 
+{
+width:500px;
+display:flex;
+}
+.input-box > input
+{
+  border-radius:2px;
+  border: 1px solid rgba(111,117,152,0.3);
+width: 100%;
+display: block;
+background: transparent;
+padding: 0 25px;
+color: #777;
+  width:75%;
+}
+.input-box > .genric-btn
+{
+  width:auto;
+  font-size: 1em;
+  min-height: 38px;
+  padding-top: .2em;
+}
+/*test search menu*/
+
+/* .Search-Food a {
+  font-size: 1.2em;
+  min-height: 48px;
+  padding-top: .2em;
+}
+.Search-Food .genric-btn {
+  width: 90%;
+  width: auto;
+}
+
+.common-input {
+  border: 1px solid rgba(111,117,152,0.3);
+  line-height: 48px;
+  width: 100%;
+  display: block;
+  background: transparent;
+  padding: 0 25px;
+  color: #777;
+  width: 70%;
+} */
