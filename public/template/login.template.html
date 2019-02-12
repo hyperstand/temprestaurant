@@ -4,12 +4,12 @@
             <h3>Login</h3>
             <p><% result %></p>
     </div>
-    <form method="POST" name="userForm" id="Loginbody" ng-submit="Login()">
+    <form method="POST" name="userForm" id="Loginbody" ng-submit="Login()" novalidate>
             <div class="mt-20">
                     <input type="email" name="email" 
-                    placeholder="Email address" required ng-pattern='emailregex'
+                    placeholder="Email address"  ng-pattern='emailregex' ng-required=true
                      class="single-input" ng-model="data.email" ng-disabled="Load == true" ng-class="{'disabled':Load==true}">
-                    <p class="notify"  ng-messages="userForm.email.$error"   ng-show="userForm.$submitted ||userForm.email.$touched">
+                    <p class="notify"  ng-messages="userForm.data.email.$error" ng-if="interacted(userForm.data.email)"  ng-show="userForm.$submitted ||userForm.data.email.$touched">
                        <span class="error" ng-message="pattern" >Email Not Valid</span> 
                        <span class="error" ng-message="required">Email Field Cannot Be Empty</span> 
                     </p>
@@ -17,14 +17,14 @@
             <div class="mt-20">
                             <input type="password" name="password" ng-disabled="Load == true"
                             placeholder="Password" ng-class="{'disabled':Load==true}"
-                            required class="single-input" name="password" ng-model="data.password" >
-                            <p class="notify" ng-messages="userForm.password.$error" ng-show="userForm.$submitted ||userForm.password.$touched">
+                             class="single-input" name="data.password" ng-model="data.password" >
+                            <p class="notify" ng-messages="userForm.data.password.$error" ng-if="interacted(userForm.password)" ng-show="userForm.$submitted ||userForm.data.password.$touched">
                                <span class="error" ng-message="required">Password Field Cannot Be Empty</span> 
                             </p>
             </div>
 
             <div class="mt-20">
-                    <button href=""  class="genric-btn primary" ng-disabled="Load == true" ng-class="{'disabled':Load==true}">Login</button>
+                    <button href=""  class="genric-btn primary" ng-disabled="Load == true" ng-class="{'disabled':Load==true}" type="submit">Login</button>
             </div>
             <div class="footer">
                     <div class="remember">
