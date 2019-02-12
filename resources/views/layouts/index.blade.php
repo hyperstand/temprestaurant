@@ -134,38 +134,6 @@
                                              <div class="col-lg-6 rel-left"> <h3> <%item.food_name%> </h3> <p class="pt-30 pb-30"> <% item.food_desc%> </p> <a ng-href="<% item.link%>" class="primary-btn header-btn text-uppercase">view full menu</a> </div> <div class="col-lg-6"> <img class="img-fluid" ng-src="<% item.img_url%>" alt=""> </div> 
                                         </div>
                              </owl-carousel>
-{{-- 
-                            <div class="active-realated-carusel">
-                                <div class="item row align-items-center">
-                                    <div class="col-lg-6 rel-left">
-                                       <h3>
-                                               Fresh & Crispy All the time
-                                       </h3>
-                                       <p class="pt-30 pb-30">
-                                               Who are in extremely love with eco friendly system. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                                       </p>
-                                        <a href="#" class="primary-btn header-btn text-uppercase">view full menu</a>								   
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <img class="img-fluid" src="img/slider1.jpg" alt="">
-                                    </div>
-                                </div>
-                                <div class="item row align-items-center">
-                                    <div class="col-lg-6 rel-left">
-                                       <h3>
-                                               Fresh & Crispy All the time
-                                       </h3>
-                                       <p class="pt-30 pb-30">
-                                               Who are in extremely love with eco friendly system. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                                       </p>
-                                        <a href="#" class="primary-btn header-btn text-uppercase">view full menu</a>								   
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <img class="img-fluid" src="img/slider1.jpg" alt="">
-                                    </div>
-                                </div>							
-                            </div> --}}
-
                         </div>
                     </div>	
                 </section>
@@ -215,7 +183,9 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="js/vendor/bootstrap.min.js"></script>	
 <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.52.0/mapbox-gl.js'></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.5/angular.min.js"></script>		
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.5/angular.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.5/angular-messages.js"></script>	
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.2/angular-route.min.js"></script>	
 <script src="js/easing.min.js"></script>			
 <script src="js/hoverIntent.js"></script>
 <script src="js/superfish.min.js"></script>	

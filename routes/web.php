@@ -22,9 +22,14 @@ Route::get('/menu', function () {
     return view('layouts.menu');
 });
 
-Route::get('/login', function () {
-    return view('layouts.login');
+
+Route::get('/auth', function () {
+    return view('layouts.auth');
 });
+
+//Login
+Route::post('/login','LoginController@attemp');
+//Login
 
 Route::get('/register', function () {
     return view('layouts.register');

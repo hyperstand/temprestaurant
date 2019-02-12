@@ -10,8 +10,7 @@
                 <ul class="nav-menu not-login">
                   <li><a href="{{url('menu')}}">Our Menu</a></li>
                   <li><a href="{{url('gallery')}}">Gallery</a></li>
-                  <li><a href="{{url('login')}}" class="primary-btn text-white text-uppercase">sign in</a></li>
-           
+                  <li><a href="{{url('auth#!/login')}}" class="primary-btn text-white text-uppercase">sign in</a></li>
                 </ul>
               </nav>		    		
             </div>

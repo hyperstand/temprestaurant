@@ -1,4 +1,4 @@
-var ModuleDeclare=angular.module("App", ["ngMessages" ],function($interpolateProvider) {
+var ModuleDeclare=angular.module("App", ['ngRoute','ngMessages'],function($interpolateProvider) {
     $interpolateProvider.startSymbol('<%');
     $interpolateProvider.endSymbol('%>');
 });

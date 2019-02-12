@@ -131,6 +131,8 @@
 <script src="js/vendor/popper.1.12.9.min.js"></script>
 <script src="js/vendor/bootstrap.min.js"></script>	
 <script src="js/vendor/angularjs-1.7.5.min.js"></script>		
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.5/angular-messages.js"></script>	
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.2/angular-route.min.js"></script>	
 <script src="js/easing.min.js"></script>			
 <script src="js/hoverIntent.js"></script>
 <script src="js/superfish.min.js"></script>	

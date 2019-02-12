@@ -18,16 +18,13 @@
 
 
 @section('component') 
-
-        
-        
-<div class="auth Loginbody" ng-controller="loginController" >
+{{-- <div class="auth Loginbody" ng-controller="loginController" >
         <div class="header">
                 <img src="img/logo.png" alt="" title="" />
                 <h3>Login</h3>
                 <p><% result %></p>
         </div>
-        <form action="" name="userForm" id="Loginbody" ng-submit="Login()">
+        <form method="POST" name="userForm" id="Loginbody" ng-submit="Login()">
                 <div class="mt-20">
                         <input type="email" name="email" 
                         placeholder="Email address" required
@@ -62,15 +59,15 @@
                         <a href="" class="retrive">Forget Password</a>
                 </div>
 
-                {{-- @include('component.spinner'); --}}
+                @include('component.spinner');
         </form>
 
         <div class="footer-2">
                 <p>Don't Have An Account Sign Up <a href="{{url('register')}}">Here</a></p>
         </div>
-    </div> 
+    </div>  --}}
 
-
+    <main ng-view></main>
 @endsection
 
 
@@ -79,14 +76,43 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="js/vendor/bootstrap.min.js"></script>	
 <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.5/angular.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.5/angular-messages.js"></script>		
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.5/angular-messages.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.2/angular-route.min.js"></script>		
 <script src="js/easing.min.js"></script>			
 <script src="js/hoverIntent.js"></script>
 <script src="js/superfish.min.js"></script>	
 <script src="js/jquery.magnific-popup.min.js"></script>	
 <script src="js/owl.carousel.min.js"></script>			
 <script src="js/jquery.sticky.js"></script>
-<script src="js/jquery.nice-select.min.js"></script>				
+<script src="js/jquery.nice-select.min.js"></script>
+<script>
+                //         window.loadedDependencies = [];
+                // window.loadedDependencies.push()
+                // window.loadedDependencies.push()
+</script>
 <script src="js/app.js"></script>
 <script src="js/controller/login.controller.js"></script>
+<script>
+        
+
+                ModuleDeclare
+                .constant("CSRF_TOKEN", '{{ csrf_token()}}') 
+                .config(function ($routeProvider) {
+                        $routeProvider
+                          .when('/login', {
+                            templateUrl: 'template/login.template.html',
+                            controller: 'loginController'
+                          })
+                          .when('/register', {
+                            templateUrl: 'template/register.template.html',
+                            controller: 'loginController'
+                          })
+                          .otherwise({
+                             redirectTo: '/login'
+                          });
+                          
+                      });</script>
+				
+
+
 @endsection

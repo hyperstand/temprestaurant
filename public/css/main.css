@@ -2524,18 +2524,21 @@ body.mobile-nav-active #mobile-nav-toggle{
 }
 
 .Search-Food .genric-btn.disable,
-.Search-Food .filter-btn > i.disable
+.Search-Food .filter-btn > i.disable,
+.auth >form .genric-btn.primary.disabled
 {
  color:silver !important;
  background-color: maroon !important;
  border:1px  maroon ;
  cursor: not-allowed;
 }
-.Search-Food input.disable
+
+.Search-Food input.disable,
+.auth >form .single-input.disabled
 {
     cursor: not-allowed;
     background-color:grey;
-    opacity: 20%;
+    opacity: 20% !important;
 }
 
 
@@ -2641,7 +2644,6 @@ body.mobile-nav-active #mobile-nav-toggle{
 /*notfound*/
 .notfound
 {
-    Border:1px solid red;
     text-align: center;
     font-size: 1.5em;
     font-weight: 400;

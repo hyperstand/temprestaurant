@@ -1,33 +1,28 @@
-ModuleDeclare.controller('loginController', ['$scope','$timeout',Controller]);
+ModuleDeclare.controller('loginController', ['$scope','$timeout','$q','$http','CSRF_TOKEN',Controller]);
 
-function Controller($scope,$timeout,$q,$http)
+function Controller($scope,$timeout,$q,$http,CSRF_TOKEN)
 {   $scope.data={
-    email:false,
-    password:false,
+    email:'',
+    password:'',
     rememberme:false
     };
-
-    $scope.emailregex='/^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i'
+    $scope.Load=false;
+    $scope.emailregex=/^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
 
     $scope.Login=function(){
-        $scope.error_stat.email=true;
-        $scope.error_stat.password=true;
-        console.log($scope.error_stat.password.$dirty);
-        console.log($scope.error_stat.rememberme);
-        // $scope.result;  
-        $('#Loginbody').submit();      
+      $scope.Load=true;
+      $http.post('http://localhost/project/restaurant_level/public/login',{crfs:CSRF_TOKEN,data:$scope.data}).then(function successCallback(response) {
+
+        $scope.Load=true;
+      }, function errorCallback(response) {
+        $scope.Load=true;
+      });
+
     }
-    $scope.rememberme=function(){
-        if($scope.error_stat.rememberme)
-           {
-            $scope.error_stat.rememberme=false;
-           }else{
-            $scope.error_stat.rememberme=true;
-           }
-    }
+    $scope.rememberme=()=>{($scope.data.rememberme)?($scope.data.rememberme=false):($scope.data.rememberme=true);};
+  
     // $scope.$watch('error_stat.rememberme', function(newValue, oldValue) {
     // },true);
 
 
-    // function()
 }

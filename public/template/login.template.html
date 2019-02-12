@@ -1,0 +1,55 @@
+<div class="auth Loginbody" ng-controller="loginController" >
+    <div class="header">
+            <img src="img/logo.png" alt="" title="" />
+            <h3>Login</h3>
+            <p><% result %></p>
+    </div>
+    <form method="POST" name="userForm" id="Loginbody" ng-submit="Login()">
+            <div class="mt-20">
+                    <input type="email" name="email" 
+                    placeholder="Email address" required ng-pattern='emailregex'
+                     class="single-input" ng-model="data.email" ng-disabled="Load == true" ng-class="{'disabled':Load==true}">
+                    <p class="notify"  ng-messages="userForm.email.$error"   ng-show="userForm.$submitted ||userForm.email.$touched">
+                       <span class="error" ng-message="pattern" >Email Not Valid</span> 
+                       <span class="error" ng-message="required">Email Field Cannot Be Empty</span> 
+                    </p>
+            </div>
+            <div class="mt-20">
+                            <input type="password" name="password" ng-disabled="Load == true"
+                            placeholder="Password" ng-class="{'disabled':Load==true}"
+                            required class="single-input" name="password" ng-model="data.password" >
+                            <p class="notify" ng-messages="userForm.password.$error" ng-show="userForm.$submitted ||userForm.password.$touched">
+                               <span class="error" ng-message="required">Password Field Cannot Be Empty</span> 
+                            </p>
+            </div>
+
+            <div class="mt-20">
+                    <button href=""  class="genric-btn primary" ng-disabled="Load == true" ng-class="{'disabled':Load==true}">Login</button>
+            </div>
+            <div class="footer">
+                    <div class="remember">
+                            <div class="custom-checkbox ">
+                                    <input type="checkbox" id="confirm-checkbox" ng-model="data.rememberme">
+                                    <label for="confirm-checkbox"></label>
+                              </div>
+                            <p class="remember-text" ng-click="rememberme()">
+                                Remember Me
+                            </p> 
+                    </div>
+                    <a href="" class="retrive">Forget Password</a>
+            </div>
+
+            <div class="spinner" ng-hide="Load == false">
+                <div class="rect1"></div>
+                <div class="rect2"></div>
+                <div class="rect3"></div>
+                <div class="rect4"></div>
+                <div class="rect5"></div>
+            </div>
+            
+    </form>
+
+    <div class="footer-2">
+            <p>Don't Have An Account Sign Up <a href="#!/register">Here</a></p>
+    </div>
+</div>  
