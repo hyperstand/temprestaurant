@@ -3152,6 +3152,10 @@ min-width: 320px; */
 {
     margin: 0;
 }
+.product-adddel > .primary
+{
+    color:#f42f2c !important;
+}
 .mycart-body > .cart-content >.cart-data .product-remove >.genric-btn
 {
     width:35px;
@@ -3280,10 +3284,7 @@ min-width: 320px; */
     color:white !important;
     align-items: center !important;
 }
-  .product-adddel >.genric-btn:hover
-{
-  color:#f42f2c !important;
-}
+
 
   .product-adddel >.tot-item
 {
@@ -3615,10 +3616,76 @@ margin-top:1em !important;
     color: white !important;
     align-items: center !important;
 }
-.picker > .genric-btn:hover
+.picker  .genric-btn:hover
 {
-    color:#f42f2c;
+    color:#f42f2c !important;
 }
 /*Test booking date*/
+
+/*date booking*/
+.date-modal
+{
+
+}
+.date-modal > .calendar-day-header 
+{
+    width: 100%;
+    position: relative;
+}
+.date-modal>.calendar-day-header > .day-label
+{
+    color: #8A8A8A;
+    padding: 2px 0;
+    width: 12.2857142%;
+    display: inline-block;
+    text-align: center;
+}
+.date-modal>.calendar-grid
+{
+}
+.calendar-grid>.datecontainer
+{
+    width: 14.2857142%;
+    display: inline-block;
+    text-align: center;
+    padding: 4px 0;
+}
+.calendar-grid>.datecontainer>.datenumber
+{
+    max-width: 35px;
+    max-height: 35px;
+    line-height: 35px;
+    margin: 0 auto;
+    color: #8A8A8A;
+    position: relative;
+    text-align: center;
+    cursor: pointer;
+    z-index: 1;
+    transition: all .25s cubic-bezier(0.7,-0.12, 0.2, 1.12);
+}
+.calendar-grid>.datecontainer>.datenumber.day-selected:before {
+    background: #FF6E40;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    -webkit-animation: select-date .25s forwards;
+    animation: select-date .25s forwards;
+  }
+
+/*date booking*/
+
+/*animate css test*/
+.change-left
+{
+  -webkit-animation: fadeInLeft .5s;
+  animation: fadeInLeft .5s;
+}
+.change-right
+{
+  -webkit-animation: fadeInRight .5s;
+  animation: fadeInRight .5s;
+}
+
+
+/*animate css test*/
 
 

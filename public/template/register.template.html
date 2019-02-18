@@ -1,84 +1,98 @@
 <div class="auth Registerbody" >
-    <div class="header">
-            <img src="img/logo.png" alt="" title="" />
-            <h3>Register</h3>
-    </div>
-    <form action="" class="row">
+  <div class="header">
+          <img src="img/logo.png" alt="" title="" />
+          <h3>Register</h3>
+  </div>
+
+  <form ng-submit="register()" name="FormUser"  class="row" novalidate>
+  
+  <div class="mt-20 col-md-6">
     
-    <div class="mt-20 col-md-6">
-      
-      <input type="text" name="firstname" 
-      placeholder="Firstname"  
-      required="" 
-      class="single-input">
-      <p class="notify">
-             <span class="success">Username Required</span> 
-      </p>
-    </div>
-    
-    <div class="mt-20 col-md-6">
-      <input type="text" name="lastname" 
-      placeholder="Lastname" 
-      required="" class="single-input">
-      <p class="notify">
-                    <span class="error">Username Required</span> 
-      </p>
-    </div>
+    <input type="text" name="fname" 
+    placeholder="Firstname"  
+    required ng-model="data.fname"
+    class="single-input">
+    <p class="notify" ng-if="interacted(FormUser.fname)" ng-messages="FormUser.fname.$error">
+        <span class="error" ng-message="required">Firstname Required</span>
+    </p>
 
-    <div class="mt-20 col-md-12">
-      <input type="email" name="email" 
-      placeholder="Email" required="" 
-      class="single-input">
-      <p class="notify">
-                    <span class="error">Username Required</span> 
-      </p>
-    </div>
-    <div class="mt-20 col-md-12">
-        <input type="text" name="phnnumber" 
-        placeholder="Phone Number" required="" 
-        class="single-input">
-        <p class="notify">
-                      <span class="error">Username Required</span> 
-        </p>
-    </div>
+  </div>
+  
+  <div class="mt-20 col-md-6">
+    <input type="text" name="lname" ng-model="data.lname"
+    placeholder="Lastname" 
+    required class="single-input">
+    <p class="notify" ng-if="interacted(FormUser.lname)" ng-messages="FormUser.lname.$error">
+        <span class="error" ng-message="required">Lastname Required</span> 
+    </p>
+  </div>
 
-    <div class="mt-20 col-md-6">
-      <input type="password" 
-      name="Password" placeholder="Password" 
-      required="" class="single-input">
-      <p class="notify">
-                    <span class="error">Username Required</span> 
-      </p>
-    </div>
-    <div class="mt-20 col-md-6">
-                    <input type="password" 
-                    name="Password" placeholder="Repeat Password" 
-                    required="" class="single-input">
-                    <p class="notify">
-                                  <span class="error">Username Required</span> 
-                    </p>
-    </div>
+  <div class="mt-20 col-md-12">
+    <input type="email" name="email" 
+    placeholder="Email" required ng-model="data.email" form="FormUser.email.$error"
+    record-validator="email"  ng-pattern='emailregex' 
+    class="single-input">
+    <p class="notify" ng-if="interacted(FormUser.email)"    ng-messages="FormUser.email.$error">
+          <span ng-message="record-loading">Checking Email ...</span>
+          <span class="success" ng-message="sucess">Email Available</span>
+          <span  ng-message="record-taken" >Sorry, but this is already taken</span>   
+          <span class="error" ng-message="required">Email Required</span> 
+          <span class="error" ng-message="pattern">Not Valid Email</span>
+    </p>
+  </div>
 
-    <div class="mt-20 col-md-12">
-            <div class="agree">
-              <div class="custom-checkbox missing">
-                    <input type="checkbox" id="confirm-checkbox">
-                    <label for="confirm-checkbox"></label>
-              </div>
-              <p class="confirm-text">
-                 By clicking this checkbox you accept the <a href="#">terms and conditions</a>
-                 of this website
-              </p> 
-            </div>
-    </div>
+  <div class="mt-20 col-md-12">
+    <input type="text" name="phnnumber" 
+    placeholder="Phone Number" required ng-model="data.phnnumber"
+    class="single-input">
+    <p class="notify">
+           <span class="error">Phone Number Required</span> 
+    </p>
+</div>
 
-    <div class="mt-20 col-md-12">
-                    <a href="#" class="genric-btn primary">Register</a>
-    </div>
-    <div class="footer col-md-12">
-            <p class="retrive">Login <a href="#!/login">Here</a> If You Have Account</p> 
-    </div>
-    </form>
+
+<div class="mt-20 col-md-6">
+  <input type="password"  password-characters-validator
+  name="password" placeholder="Password" ng-model="data.password" ng-minlength="6"
+  required class="single-input">
+  <p class="notify" ng-if="interacted(FormUser.password)" ng-messages="FormUser.password.$error">
+                <span class="error" ng-message="minlength">The value for this field is too short</span> 
+                <span class="error" ng-message="required">Password Required</span> 
+                <span class="error" ng-message="password-characters">      Your password must consist of alphabetical or numeric characters.
+                  It must also contain at least one special character, a number as well as an uppercase letter.</span> 
+  </p>
+</div>
+
+<div class="mt-20 col-md-6">
+                <input type="password" 
+                name="password_confirm" placeholder="Repeat Password" match-validator="data.password"
+                required class="single-input" ng-model="data.password_confirm">
+                <p class="notify" ng-if="interacted(FormUser.password_confirm)" ng-messages="FormUser.password_confirm.$error">
+                    <span class="error" ng-message="required">Please Repeat password </span>
+                    <span class="error" ng-message="match">This password does not match the password entered before</span> 
+                </p>
+</div>
+
+<div class="mt-20 col-md-12">
+        <div class="agree">
+          <div class="custom-checkbox missing">
+                <input type="checkbox" id="confirm-checkbox" ng-model="data.accepted">
+                <label for="confirm-checkbox"></label>
+          </div>
+          <p class="confirm-text" ng-click="accept()">
+             By clicking this checkbox you accept the <a href="#">terms and conditions</a>
+             of this website
+          </p> 
+        </div>
+</div>
+
+  <div class="mt-20 col-md-12">
+                  <button href="" type="submit" class="genric-btn primary">Register</button>
+  </div>
+  <div class="footer col-md-12">
+          <p class="retrive">Login <a href="#!/login">Here</a> If You Have Account</p> 
+  </div>
+  </form>
 
 
 </div> 

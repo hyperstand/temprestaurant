@@ -5,12 +5,12 @@
 <link rel="stylesheet" href="css/linearicons.css">
 <link rel="stylesheet" href="css/owl.carousel.css">
 <link rel="stylesheet" href="css/font-awesome.min.css">
-<link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.52.0/mapbox-gl.css' rel='stylesheet' />
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
 <link rel="stylesheet" href="css/nice-select.css">			
 <link rel="stylesheet" href="css/magnific-popup.css">
 <link rel="stylesheet" href="css/bootstrap.css">
 <link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="css/animate.min.css">
 <link rel="stylesheet" href="css/booking.css">
 <link rel="stylesheet" href="css/loading.css">
 <link rel="stylesheet" href="http://eonasdan.github.io/bootstrap-datetimepicker/content/bootstrap-datetimepicker.css">
@@ -23,18 +23,19 @@
 
 
 {{-- modal booking --}}
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" ng-controller="DashboardController" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
-      <div class="modal-content" style="max-width:400px;">
+      <div class="modal-content" style="max-width: 400px;margin: 0 auto;">
         <h4>Booking Request</h4>
 
-            <form action="" class="booking-modal">
+        {{-- ng-class="{ 'change-right': position == 0 }" --}}
+            {{-- main --}}
+            <form  class="booking-modal"  ng-show="position == 0" ng-class="{ 'change-right': position == 0 }">
                         <div class="mt-10">
                         <p class="title">Date</p>
                         <div class="picker">
-                            {{-- <p>Choose Your Date</p> --}}
-                            <p>12 June 2012</p>
-                            <a class="genric-btn primary">
+                            <p><% Info.Date_info %></p>
+                            <a href="" class="genric-btn primary" ng-click="changepage(1)">
                                     <i class="fas fa-calendar-alt"></i>
                             </a>
                         </div>
@@ -44,23 +45,23 @@
                                 <p class="title">Time</p>
                                     <div class="picker">
                                         {{-- <p>08:00 AM</p> --}}
-                                        <p>Pick Your Time</p>
-                                        <a class="genric-btn primary">
-                                                <i class="far fa-clock"></i>
+                                        <p><% Info.Time_info %></p>
+                                        <a href="" class="genric-btn primary" ng-click="changepage(2)">
+                                            <i class="far fa-clock"></i>
                                         </a>
                                     </div>
                                 </div>
                                 <div class="mt-10">
                                   <p class="title">Number Of People</p>
                                   <div class="product-adddel">
-                                        <a class="genric-btn primary">
+                                        <a  class="genric-btn primary" ng-click="togglepeople('delete')">
                                              <i class="fas fa-minus"></i>
                                         </a>
-                                        <p class="tot-item">1 People</p>
-                                        <a class="genric-btn primary">
+                                        <p class="tot-item"><% Info.People_info %> People</p>
+                                        <a href="" class="genric-btn primary" ng-click="togglepeople('add')">
                                              <i class="fas fa-plus"></i>
                                         </a>
-                                  </div>
+                                  </div> 
  
 
                                  {{-- <div class="input-numb-people">
@@ -80,8 +81,32 @@
 
                                 </div>
 
-                        <a href="#" class="mt-20 genric-btn primary radius">
+                        <a href="" class="mt-20 genric-btn primary radius">
                             Finish Booking</a>
+            </form>
+
+            {{-- pick date --}}
+            <form  class="date-modal" ng-show="position == 1"  ng-class="{ 'change-left': position == 1 }">
+
+
+
+                <div class="calendar-day-header">
+                    <span ng-repeat="day in days" class="day-label"><% day.short %></span>
+                </div>
+                <% month %>
+				{{-- <div class="calendar-grid" >
+					<div
+						ng-repeat="day in month"
+						class="datecontainer"
+						track by $index>
+						<div class="datenumber">
+							<% day.daydate %>
+						</div>
+					</div>
+				</div> --}}
+
+                <a href="" class="mt-20 genric-btn primary radius" ng-click="changepage(0)">
+                        Confirm Date</a>
             </form>
 
       </div>
@@ -140,24 +165,6 @@
                         <p>You Have No Booking</p>
                         <a href="#" class="genric-btn primary-border radius" data-toggle="modal" data-target="#exampleModal">Book A Table</a>                 
                 </div>
-
-                {{-- Booking --}}
-                {{-- <form action="">
-                        <div class="mt-10">
-                        <p class="title">Date</p>
-                        <input type="text" name="first_name" class="single-input">
-                        </div>
-                        <div class="mt-10">
-                                <p class="title">Time</p>
-                                <input type="text" name="first_name" class="single-input">
-                                </div>
-                                <div class="mt-10">
-                                        <p class="title">Number Of People</p>
-                                        <input type="text" name="first_name" class="single-input">
-                                        </div>
-                        <a href="#" class="mt-20 genric-btn primary radius">
-                            Finish Booking</a>
-                </form> --}}
 
                 {{-- booking-info --}}
                 {{-- <div class="body-info-book ">
@@ -223,24 +230,19 @@
 
 
 @section('javascript')
-<script src="js/vendor/jquery-2.2.4.min.js">
-</script><script src="js/vendor/bootstrap.min.js"></script>	
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.jss"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-
-<script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.52.0/mapbox-gl.js'></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.5/angular.min.js"></script>		
+<script src="js/vendor/jquery-2.2.4.min.js"></script>
+<script src="js/vendor/popper.1.12.9.min.js"></script>
+<script src="js/vendor/bootstrap.min.js"></script>	
+<script src="js/vendor/angularjs-1.7.5.min.js"></script>		
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.5/angular-messages.js"></script>	
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.2/angular-route.min.js"></script>	
 <script src="js/easing.min.js"></script>			
 <script src="js/hoverIntent.js"></script>
 <script src="js/superfish.min.js"></script>	
-<script src="js/jquery.ajaxchimp.min.js"></script>
 <script src="js/jquery.magnific-popup.min.js"></script>	
 <script src="js/owl.carousel.min.js"></script>			
 <script src="js/jquery.sticky.js"></script>
 <script src="js/jquery.nice-select.min.js"></script>			
-<script src="js/parallax.min.js"></script>	
-<script src="js/mail-script.js"></script>	
-<script src="js/main.js"></script>	
 <script src="js/app.js"></script>
-
+<script src="js/controller/dashboard.controller.js"></script>
 @endsection

@@ -25,7 +25,11 @@
 <script src="js/vendor/bootstrap.min.js"></script>	
 <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.5/angular.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.5/angular-messages.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.2/angular-route.min.js"></script>		
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.2/angular-route.min.js"></script>
+
+
+
+
 <script src="js/easing.min.js"></script>			
 <script src="js/hoverIntent.js"></script>
 <script src="js/superfish.min.js"></script>	
@@ -33,26 +37,39 @@
 <script src="js/jquery.sticky.js"></script>
 <script src="js/jquery.nice-select.min.js"></script>
 <script>
-                //         window.loadedDependencies = [];
-                // window.loadedDependencies.push()
-                // window.loadedDependencies.push()
+                // window.loadedDependencies = [];
+                // window.loadedDependencies.push('ngRoute')
+                // window.loadedDependencies.push('ngMessages')
 </script>
 <script src="js/app.js"></script>
-<script src="js/controller/login.controller.js"></script>
 <script>
-        
-
+  ModuleDeclare.run(function($rootScope){
+    $rootScope.$on('$routeChangeSuccess', function (event, current, previous) {
+        $rootScope.title = current.$$route.title;
+    });
+  })
+</script>
+{{-- <script src="js/provider/ng-intl-tel-input.provider.js"></script>
+<script src="js/directive/ng-intl-tel-input.directive.js"></script>
+<script src="http://hodgepodgers.github.io/ng-intl-tel-input/bower_components/intl-tel-input/lib/libphonenumber/build/utils.js"></script>
+<script src="http://hodgepodgers.github.io/ng-intl-tel-input/bower_components/intl-tel-input/build/js/intlTelInput.js"></script> --}}
+<script src="js/controller/login.controller.js"></script>
+<script src="js/controller/register.controller.js"></script>
+<script src="js/directive/register.directive.js"></script>
+<script>
                 ModuleDeclare
                 .constant("CSRF_TOKEN", '{{ csrf_token()}}') 
                 .config(function ($routeProvider) {
                         $routeProvider
                           .when('/login', {
+                            title: 'Login',
                             templateUrl: 'template/login.template.html',
                             controller: 'loginController'
                           })
                           .when('/register', {
+                            title: 'Register',
                             templateUrl: 'template/register.template.html',
-                            controller: 'loginController'
+                            controller: 'registerController'
                           })
                           .otherwise({
                              redirectTo: '/login'
