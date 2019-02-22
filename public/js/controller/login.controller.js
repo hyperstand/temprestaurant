@@ -11,13 +11,13 @@ function Controller($scope,$timeout,$q,$http,CSRF_TOKEN)
       password:{touched:false,error:0}
     }
     $scope.Load=false;
+    // $scope.result="";
+    $scope.submitted=false;
     $scope.emailregex=/^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
 
     $scope.Login=function()
     {
-    console.log($scope.input_stat);
-    $scope.userForm.email.$validate();
-    $scope.userForm.password.$validate();
+    $scope.submitted=true;
     if($scope.input_stat.email.error > 0  || $scope.input_stat.password.error > 0)
       {
         console.log('error');
@@ -25,9 +25,17 @@ function Controller($scope,$timeout,$q,$http,CSRF_TOKEN)
     else
     {
             $scope.Load=true;
-      $http.post('http://localhost/project/restaurant_level/public/login',{crfs:CSRF_TOKEN,data:$scope.data}).then(function successCallback(response) {
+      $http.post('./auth/login',{crfs:CSRF_TOKEN,data:$scope.data}).then(function successCallback(response) {
 
-        $scope.Load=false;
+        if(response.data.status)
+        {
+          window.location=`./${response.data.to_url}`;
+
+        }else{
+          $scope.result=response.data.message;
+          $scope.Load=false;
+        }
+
       }, function errorCallback(response) {
         $scope.Load=false;
       });

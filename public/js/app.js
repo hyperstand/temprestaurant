@@ -140,34 +140,7 @@ $( window ).load(function() {
         }
       });
       
-      
-    //   $('.active-realated-carusel').owlCarousel({
-    //     items:1,
-    //     loop:true,
-    //     margin: 100,
-    //     dots: true,
-    //     nav:true,
-    //     navText: ["<span class='fas fa-chevron-up'></span>","<span class='fas fa-chevron-down'></span>"],                
-    //     autoplay:true,
-    //     responsive: {
-    //         0: {
-    //             items: 1
-    //         },
-    //         480: {
-    //             items: 1,
-    //         },
-    //         768: {
-    //             items: 1,
-    //         }
-    //     }
-    // });
-      
 });
-
-
-
-
-
 $(document).ready(function(){
 	"use strict";
 

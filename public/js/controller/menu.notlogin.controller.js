@@ -116,7 +116,7 @@ function MenuController($scope,$timeout,$rootScope,$q,urlprovider,getfoodservice
 
 
 
-    $scope.ToggleFilter=()=>{ $('#hyde').toggleClass('hide');}
+    $scope.ToggleFilter=()=>{ $('#hyde').toggleClass('hide'); }
 
     $scope.SearchFood=function(){
         if(!$scope.stat.Load)
@@ -135,6 +135,7 @@ function MenuController($scope,$timeout,$rootScope,$q,urlprovider,getfoodservice
   
     $rootScope.$on('check_stat', function(event, args) {   
 
+        
                 param_res.forEach(function(item) {
                    
                     if(item['fltr'])
@@ -165,6 +166,7 @@ function MenuController($scope,$timeout,$rootScope,$q,urlprovider,getfoodservice
 
     function request()
     {   
+        history.replaceState({state:1,rand:Math.random()}, "State 1", "?state=1");
         $scope.stat.Load=true;
         $('.Loading-content').toggleClass('hide');
         $scope.FilterList = [];
@@ -172,7 +174,9 @@ function MenuController($scope,$timeout,$rootScope,$q,urlprovider,getfoodservice
         $scope.stat.paginationSize*=0;
         $scope.stat.notfound=false;
 
-        window.history.replaceState(null, null, urlprovider.scema_build(window.location.pathname,param_res));
+        // var  History = window.History, // Note: We are using a capital H instead of a lower h
+	    // State = History.getState();
+        // console.log(State);
 
         getfoodservice.get_data(param_res,urlprovider).then(function($response){
             $timeout(function() {
@@ -227,6 +231,10 @@ function MenuController($scope,$timeout,$rootScope,$q,urlprovider,getfoodservice
             $scope.stat.notfound=true;
             $('.Loading-content').toggleClass('hide');
         });
+
+
+        
+
     }
 
 
@@ -243,8 +251,6 @@ function MenuController($scope,$timeout,$rootScope,$q,urlprovider,getfoodservice
         $('#myModal').modal('show');
     });
 
-    // $rootScope.$broadcast('click_check', { content: param_res[0]['fltr'] });
     $scope.checklistener=function(){
-
     }
 }

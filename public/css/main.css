@@ -14,13 +14,13 @@
     position: relative;
     top:.1em;
 }
+
 .sf-arrows .sf-with-ul {
     padding-right: 30px;
 }
 
 ::-moz-selection{
     background-color:#f42f2c;
-    background-color:cyan;
     color:#fff
 }
 ::selection{
@@ -3152,6 +3152,10 @@ min-width: 320px; */
 {
     margin: 0;
 }
+.product-adddel > .primary
+{
+    color:#f42f2c !important;
+}
 .mycart-body > .cart-content >.cart-data .product-remove >.genric-btn
 {
     width:35px;
@@ -3280,10 +3284,11 @@ min-width: 320px; */
     color:white !important;
     align-items: center !important;
 }
-  .product-adddel >.genric-btn:hover
+.product-adddel >.genric-btn:hover
 {
-  color:#f42f2c !important;
+color:#f42f2c !important;
 }
+
 
   .product-adddel >.tot-item
 {
@@ -3556,37 +3561,7 @@ margin-top:1em !important;
     margin:0;
 }
 
-/*Test booking people*/
-.input-numb-people
-{ 
-    /* Border:1px solid black; */
-    overflow: hidden;
-}
-.input-numb-people >.data
-{
-    float:left;
-    font-weight: 500;
-    line-height:35px;
-    
-}
-.input-numb-people >.control-btn
-{
-    float:right;
-    display:flex;
-    
-}
-.input-numb-people >.control-btn >.genric-btn
-{
-    width: 35px;
-    height: 35px;
-    line-height: 35px;
-    border-radius: 50%;
-    padding: 0;
-    margin: 0;
-    color: white !important;
-    align-items: center !important;
-}
-/*Test booking people*/
+
 
 /*Test booking date*/
 .picker
@@ -3615,10 +3590,184 @@ margin-top:1em !important;
     color: white !important;
     align-items: center !important;
 }
-.picker > .genric-btn:hover
+.picker  .genric-btn:hover
 {
-    color:#f42f2c;
+    color:#f42f2c !important;
 }
 /*Test booking date*/
+
+/*date booking*/
+.date-modal
+{
+
+}
+.date-modal > .calendar-day-header 
+{
+    width: 100%;
+    position: relative;
+}
+.date-modal>.calendar-day-header > .day-label
+{
+    color: #8A8A8A;
+    padding: 2px 0;
+    width: 14.2857142%;
+    display: inline-block;
+    text-align: center;
+}
+.date-modal>.calendar-grid
+{
+}
+.calendar-grid>.datecontainer
+{
+    width: 14.2857142%;
+    display: inline-block;
+    text-align: center;
+    padding: 4px 0;
+}
+.calendar-grid>.datecontainer>.datenumber
+{
+    max-width: 35px;
+    max-height: 35px;
+    line-height: 35px;
+    margin: 0 auto;
+    color: #8A8A8A;
+    position: relative;
+    text-align: center;
+    cursor: pointer;
+    z-index: 1;
+    font-weight:400;
+    transition: all .25s cubic-bezier(0.7,-0.12, 0.2, 1.12);
+}
+.calendar-grid>.datecontainer>.datenumber.datenumber.day-selected
+{
+    color:white;
+    font-weight:500;
+}
+.calendar-grid>.datecontainer>.datenumber.day-selected:before {
+    background: #FF6E40;
+
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    -webkit-animation: select-date .25s forwards;
+    animation: select-date .25s forwards;
+  }
+  .date-modal > .calendar-header
+  {
+    /* Border:1px solid red;    */
+    display:flex;
+    line-height:35px; 
+    margin-top:10px;
+    margin-bottom:10px;  
+  }
+  .calendar-header > .rad
+  {
+      width:35px;
+      height:35px;
+      margin:0;
+      padding:0;
+      line-height:35px;
+      border-radius:50%;
+  }
+  .date-modal > .calendar-header > .current-month-container
+  {
+      margin-left:10px;
+      margin-right:10px;
+      color:black;
+      font-weight:500;
+      font-size: 16px;
+  }
+
+  .no-hover .datenumber,
+.no-hover .datenumber:hover,
+.no-hover .datenumber:before,
+.no-hover .datenumber:hover::before {
+    cursor: default;
+    background: transparent;
+    opacity: 0.5;
+}
+.datenumber:before {
+    content: '';
+    display: block;
+    position: absolute;
+    height: 35px;
+    width: 35px;
+    border-radius: 100px;
+    z-index: -1;
+    background: transparent;
+    -webkit-transform: scale(0.75);
+    -moz-transform: scale(0.75);
+    -ms-transform: scale(0.75);
+    -o-transform: scale(0.75);
+    transform: scale(0.75);
+    transition: all .25s cubic-bezier(0.7,-0.12, 0.2, 1.12);
+    transition-property: background, transform, color, border;
+}
+.datenumber:hover::before {
+    background: #f54f4d;
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -ms-transform: scale(1);
+    -o-transform: scale(1);
+    transform: scale(1);
+}
+
+.datenumber.day-selected:before {
+    background: #f42f2c;
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -ms-transform: scale(1);
+    -o-transform: scale(1);
+    transform: scale(1);
+    -webkit-animation: select-date .25s forwards;
+    -moz-animation: select-date .25s forwards;
+    animation: select-date .25s forwards;
+}
+@-webkit-keyframes select-date {
+    0% { background: #fd8482; }
+    100% { background: #f54f4d; }
+}
+@keyframes select-date {
+    0% { background: #fd8482; }
+    100% { background: #f54f4d; }
+}
+/*date booking*/
+/*time booking*/
+.time-modal 
+{
+margin-top:.5em;
+
+
+}
+.time-modal > button
+{
+    font-weight:600 !important;margin:5px 2px!important;font-size:.9em !important;
+}
+@media(max-width:500px){
+    .time-modal > button
+    {
+        width:100%;
+    }
+
+}
+
+/*time booking*/
+
+
+/*animate css test*/
+.change-left
+{
+  -webkit-animation: fadeInLeft .5s;
+  animation: fadeInLeft .5s;
+}
+.change-right
+{
+  -webkit-animation: fadeInRight .5s;
+  animation: fadeInRight .5s;
+}
+
+
+/*animate css test*/
+
+
 
 

@@ -28,8 +28,16 @@ Route::get('/auth', function () {
 });
 
 //Login
-Route::post('/login','LoginController@attemp');
+Route::post('/auth/login',['uses' => 'Auth\LoginController@login']);
 //Login
+
+//register
+Route::post('/auth/ver/email',['uses' => 'Auth\authdataController@verify_email']);
+Route::post('/auth/ver/phonenumber',['uses' => 'Auth\authdataController@verify_phnum']);
+//regsiter
+
+//Booking
+//Booking
 
 Route::get('/register', function () {
     return view('layouts.register');

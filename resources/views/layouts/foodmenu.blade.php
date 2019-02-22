@@ -323,13 +323,13 @@
 
 @endsection
 
-
 @section('javascript')
 {{ Html::script('js/vendor/jquery-2.2.4.min.js') }}
 {{ Html::script('js/vendor/angularjs-1.7.5.min.js') }}
+{{ Html::script('https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.5/angular-messages.js') }}
+{{ Html::script('https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.2/angular-route.min.js') }}
 {{ Html::script('js/vendor/popper.1.12.9.min.js') }}
 {{ Html::script('js/vendor/bootstrap.min.js') }}
-{{ Html::script('js/vendor/mapbox-gl.52.0.js') }}
 {{ Html::script('js/superfish.min.js') }}
 {{ Html::script('js/jquery.magnific-popup.min.js') }}
 {{ Html::script('js/owl.carousel.min.js') }}

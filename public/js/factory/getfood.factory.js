@@ -5,7 +5,7 @@ function foodservicefunction($q,$http)
     
 
     function initmenu(pos,prov) {
-        var URL=prov.scema_build("http://localhost/project/restaurant_level/public/API/menu",pos);
+        var URL=prov.scema_build("./API/menu",pos);
         var filter=[],menu=[],pages=0,deferred=$q.defer(),currentpage,dArr=[];
 
         

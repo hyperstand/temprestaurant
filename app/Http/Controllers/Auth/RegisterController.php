@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Http\Request;
+use Session;
 
 class RegisterController extends Controller
 {
@@ -37,7 +39,7 @@ class RegisterController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest');
+  
     }
 
     /**
@@ -46,14 +48,7 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
-    protected function validator(array $data)
-    {
-        return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:6', 'confirmed'],
-        ]);
-    }
+
 
     /**
      * Create a new user instance after a valid registration.
@@ -62,11 +57,47 @@ class RegisterController extends Controller
      * @return \App\User
      */
     protected function create(array $data)
-    {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-        ]);
+    {   
+
+
+        if ($request->isMethod('post') && 
+        $request->has(['data.email', 'data.password','data.fname','data.lname','data.phnnum','data.accepted']) && 
+        $request->filled(['data.email', 'data.password','data.fname','data.lname','data.phnnum','data.accepted'])&& Session::token() == $request->input('crfs',null)) {
+        
+            if($request->input('data.accepted',null))
+            {
+                $stat=User::create([
+                    'fname' => $request->input('data.fname',null),
+                    'lname' => $request->input('data.lname',null),
+                    'email' => $request->input('data.email',null),
+                    'phnum' => $request->input('data.phnum',null),
+                    'password' => Hash::make($request->input('data.password',null)),
+                ]);
+                if($stat)
+                {
+                    return  response()->json(array('status'=>true,'to_url'=>'dashboard'), 200);
+                }else
+                {
+                    return  response()->json(array('status'=>false,'to_url'=>'something went wrong'), 500);
+                }
+                
+            }else
+            {
+                return response()->json([
+                    'status'=>false,
+                    'message'=>'Atribute Not Met'
+                ], 505);
+            }
+        
+        }else
+        {
+            return response()->json([
+                'status'=>false,
+                'message'=>'connection refuse'
+            ], 505);
+        }
+
+
     }
+
 }
