@@ -39,7 +39,7 @@ class RegisterController extends Controller
      */
     public function __construct()
     {
-  
+        
     }
 
     /**
@@ -78,7 +78,7 @@ class RegisterController extends Controller
                     return  response()->json(array('status'=>true,'to_url'=>'dashboard'), 200);
                 }else
                 {
-                    return  response()->json(array('status'=>false,'to_url'=>'something went wrong'), 500);
+                    return  response()->json(array('status'=>false,'message'=>'something went wrong'), 500);
                 }
                 
             }else

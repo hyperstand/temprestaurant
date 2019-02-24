@@ -75,8 +75,8 @@
 
 <div class="mt-20 col-md-12">
         <div class="agree">
-          <div class="custom-checkbox missing">
-                <input type="checkbox" id="confirm-checkbox" ng-model="data.accepted">
+          <div class="custom-checkbox" ng-class="{'missing':interacted(FormUser.accept)}">
+                <input type="checkbox" id="confirm-checkbox" ng-model="data.accepted" ng-click="accept()" name="accept" required>
                 <label for="confirm-checkbox"></label>
           </div>
           <p class="confirm-text" ng-click="accept()">
@@ -87,7 +87,7 @@
 </div>
 
   <div class="mt-20 col-md-12">
-                  <button href="" type="submit" class="genric-btn primary">Register</button>
+                  <button href type="submit" class="genric-btn primary">Register</button>
   </div>
   <div class="footer col-md-12">
           <p class="retrive">Login <a href="#!/login">Here</a> If You Have Account</p> 

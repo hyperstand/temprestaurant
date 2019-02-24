@@ -1,5 +1,5 @@
 <header id="header" id="home">
-    <div class="container">
+    <div class="container con-nav">
         <div class="row align-items-center justify-content-between d-flex">
           <div id="logo">
             <a href="{{url('dashboard')}}"> 

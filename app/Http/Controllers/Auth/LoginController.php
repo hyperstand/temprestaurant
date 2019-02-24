@@ -65,8 +65,11 @@ class LoginController extends Controller
                 'message'=>'connection refuse'
             ], 505);
         }
-        
-        
+    }
+
+    public function logout()
+    {
+        Auth::logout();
     }
 
 }

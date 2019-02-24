@@ -100,10 +100,10 @@ function validator($t, $q, $h,C)
 
     
 
-    elm.bind('blur change', function (e) {
+    elm.bind('change', function (e) {
       
       if(attrs.recordValidator=="email")
-      {   URL='./auth/email';
+      {   URL='./auth/ver/email';
           param={crsf:C};
       }else if(attrs.recordValidator=="telp"){
           URL="telp"

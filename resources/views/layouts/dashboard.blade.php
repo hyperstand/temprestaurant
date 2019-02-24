@@ -171,27 +171,33 @@
         <div class="row d-flex justify-content-center">
             <div class="col-lg-3 col-md-10  col-sm-12" style="border:1px solid red;">
                 <div class="user-info">
+                    
+                    <section class="info-user">
                     <img src="https://yt3.ggpht.com/-FpoBOVwSiE0/AAAAAAAAAAI/AAAAAAAAAAA/Yf-SnwkfdQ4/s88-c-k-no-mo-rj-c0xffffff/photo.jpg"
                         alt="">
-
-                    <section>
-                        <p class="name">MyClark Youser</p>
-
-                        <div class="info">
-                            <dl>
-                                <dt>Total Booking</dt>
-                                <dd>0</dd>
-                            </dl>
-
-                            <dl class="">
-                                <dt>Total Delivery</dt>
-                                <dd>0</dd>
-                            </dl>
-
-                        </div>
-
-
+                    <p class="name">MyClark Youser</p>
                     </section>
+
+                    <section class="user-progess">   
+                            <div class="round-image" >
+                                    <img src="img/elements/rsvp.png">
+                            </div>
+                        <dl>
+                            <dt>Total Booking</dt>
+                            <dd >0</dd>
+                        </dl>
+                    </section>
+
+                    <section class="user-progess">
+                            <div class="round-image" >
+                                    <img src="img/elements/meal.png">
+                            </div>
+                            <dl >
+                                <dt>Total Delivery</dt>
+                                <dd >0</dd>
+                            </dl>
+                    </section>
+
                 </div>
             </div>
 
