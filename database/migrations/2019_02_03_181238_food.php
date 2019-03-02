@@ -13,17 +13,17 @@ class Food extends Migration
      */
     public function up()
     {
-        Schema::create('food', function (Blueprint $table) {
+        Schema::create('foods', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->string('desc', 255)->change();
+            $table->string('desc', 255);
             $table->string('img');
             $table->string('Calories');
             $table->string('Totfat');
             $table->string('Tags');
             $table->timestamps();
         });
-
+        // id`, `name`, `desc`, `img`, `Calories`, `Totfat`, `Tags`
     }
 
     /**

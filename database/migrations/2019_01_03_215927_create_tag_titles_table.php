@@ -16,8 +16,8 @@ class CreateTagTitlesTable extends Migration
         Schema::create('tag_titles', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
+            $table->string('filter_code');
             $table->timestamps();
-
         });
     }
 

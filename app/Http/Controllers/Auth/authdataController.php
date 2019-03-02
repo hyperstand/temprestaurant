@@ -40,12 +40,5 @@ class authdataController extends Controller
         }
     }
 
-    // public function check_time_booking(Request $request)
-    // {
-      
-    // }
-    // public function booked_date(Request $request)
-    // {
-        
-    // }
+
 }

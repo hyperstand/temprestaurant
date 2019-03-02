@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
-
+// use Illuminate\Session\Store as Session;
 use Session;
 
 class LoginController extends Controller
@@ -37,9 +37,11 @@ class LoginController extends Controller
     public function login(Request $request)
     {   
 
+
         if ($request->isMethod('post') && 
             $request->has(['data.email', 'data.password','data.rememberme']) && 
-            $request->filled(['data.email', 'data.password','data.rememberme'])&& Session::token() ==$request->input('crfs',null)) {
+            $request->filled(['data.email', 'data.password','data.rememberme'])
+            && Session::token() == $request->input('crfs',null)) {
 
             $userdata = array(
                 'email'     => $request->input('data.email',null),

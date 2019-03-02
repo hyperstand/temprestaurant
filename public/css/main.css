@@ -3647,6 +3647,7 @@ margin-top:1em !important;
     display: inline-block;
     text-align: center;
 }
+
 .date-modal>.calendar-grid
 {
 }
@@ -3657,6 +3658,12 @@ margin-top:1em !important;
     text-align: center;
     padding: 4px 0;
 }
+/*if full booked*/
+.calendar-grid > .datecontainer
+{
+
+}
+/*if full booked*/
 .calendar-grid>.datecontainer>.datenumber
 {
     max-width: 35px;
@@ -3797,7 +3804,11 @@ margin-top:.5em;
   -webkit-animation: fadeInRight .5s;
   animation: fadeInRight .5s;
 }
-
+.shake
+{
+    -webkit-animation: shake .5s;
+    animation: shake .5s;
+}
 
 /*animate css test*/
 
@@ -3834,3 +3845,12 @@ margin-top:.5em;
     }
 }
 
+/*disable button*/
+.dsb{
+    background-color: maroon !important;
+    color:silver ;
+    cursor: not-allowed;
+    border: 1px solid transparent;
+}
+ 
+/*dsiable button*/

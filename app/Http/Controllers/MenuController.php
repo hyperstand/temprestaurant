@@ -14,6 +14,14 @@ class MenuController extends Controller
     private $stat_code;
     private $list_filter;
     private $pageNum=6;
+
+
+
+
+
+
+
+
     public function test_filter_data(Request $request){
         
         $result=$this->check_param([]);

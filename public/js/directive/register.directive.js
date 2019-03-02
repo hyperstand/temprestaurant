@@ -77,7 +77,6 @@ function passwordCharactersValidator($rootScope)
               status = status && regex.test(value);
             });
             model.$setValidity('password-characters', status);
-
             $rootScope.$broadcast('changed',value);
             return value;
             });

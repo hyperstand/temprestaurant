@@ -25,7 +25,7 @@ function Controller($scope,$timeout,$q,$http,CSRF_TOKEN)
     else
     {
             $scope.Load=true;
-      $http.post('./auth/login',{crfs:CSRF_TOKEN,data:$scope.data}).then(function successCallback(response) {
+      $http.post('./login',{crfs:CSRF_TOKEN,data:$scope.data}).then(function successCallback(response) {
 
         if(response.data.status)
         {

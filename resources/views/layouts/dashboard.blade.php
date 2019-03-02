@@ -15,28 +15,43 @@
 <link rel="stylesheet" href="css/booking.css">
 <link rel="stylesheet" href="css/loading.css">
 <link rel="stylesheet" href="css/clockpicker.css">
-<link rel="stylesheet" href="http://eonasdan.github.io/bootstrap-datetimepicker/content/bootstrap-datetimepicker.css">
 @endsection
 
 @section('title','Dashboard')
 
 @section('component')
 @include('component.ifloginnav')
+<div ng-controller="DashboardController">
+{{-- modal verify --}}
+<div class="modal fade"  id="confirmmodal" tabindex="-1" role="dialog"
+    aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+            <div class="modal-content" style="max-width: 350px;margin: 0 auto;">
+                <h4 style="font-size:1.2em;">Are You Sure</h4>
+                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Velit repellat mollitia animi, eveniet perspiciatis aliquid, ipsam consequatur excepturi vero a maiores voluptate iste beatae fugit voluptates! Dolores facilis repudiandae temporibus?</p>
+                <div style="float:right !important; Border:1px solid red; width:auto;">
+                        <a href="#" class="genric-btn primary radius">Yes</a>
+                        <a href="#" class="genric-btn primary-border radius">No</a>
+                </div>
+            </div>
+    </div>
+</div>
+
 
 
 {{-- modal booking --}}
-<div class="modal fade" ng-controller="DashboardController" id="exampleModal" tabindex="-1" role="dialog"
+<div class="modal fade"  id="exampleModal" tabindex="-1" role="dialog"
     aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content" style="max-width: 400px;margin: 0 auto;">
             <h4><%Title[panel.position]%></h4>
             {{-- main --}}
-            <form class="booking-modal" ng-show="panel.position == 0" ng-class="{ 'change-right': panel.position == 0 &&  panel.animate }">
-                <div class="mt-10">
+            <form class="booking-modal" ng-submit="book_request()" ng-show="panel.position == 0" ng-class="{ 'change-right': panel.position == 0 &&  panel.animate }">
+                <div class="mt-10" ng-class="{ 'shake': panel.trigger == 'date' || panel.trigger == 'all'}">
                     <p class="title">Date</p>
                     <div class="picker">
                         <p>
-                            <% Info.Date_info %>
+                            <% Info.Date_info.display %>
                         </p>
                         <a href="" class="genric-btn primary" ng-click="changepage(1)">
                             <i class="fas fa-calendar-alt"></i>
@@ -44,12 +59,12 @@
                     </div>
 
                 </div>
-                <div class="mt-10">
+                <div class="mt-10" ng-class="{ 'shake': panel.trigger == 'time' || panel.trigger == 'all'}">
                     <p class="title">Time</p>
                     <div class="picker">
                         {{-- <p>08:00 AM</p> --}}
                         <p>
-                            <% Info.Time_info %>
+                            <% Info.Time_info.display %>
                         </p>
                         <a href="" class="genric-btn primary" ng-click="changepage(2)">
                             <i class="far fa-clock"></i>
@@ -70,12 +85,12 @@
                     </div>
                 </div>
 
-                <a href="" class="mt-20 genric-btn primary radius">
-                    Finish Booking</a>
+                <button type="submit" class="mt-20 genric-btn primary radius">
+                    Finish Booking</button>
             </form>
 
             {{-- pick date --}}
-            <form class="date-modal" ng-show="panel.position == 1" ng-class="{ 'change-left': panel.position == 1 &&  panel.animate == true}">
+            <form class="date-modal"  ng-show="panel.position == 1" ng-class="{ 'change-left': panel.position == 1 &&  panel.animate == true}">
                 <div class="calendar-header">
 
                     <a class="rad genric-btn primary radius" href ng-click="moveBack()">
@@ -95,27 +110,43 @@
 
 
 
-                <div class="calendar-day-header">
+                <div class="calendar-day-header" ng-hide="panel.load">
                     <div ng-repeat="day in days" class="day-label">
                         <% day.short %>
                     </div>
                 </div>
 
-                <div class="calendar-grid" ng-class="{false: 'no-hover'}[pickdate]">
-                    <div ng-class="{'no-hover': !day.showday}" ng-repeat="day in month" class="datecontainer" ng-style="{'margin-left': calcOffset(day, $index)}"
+                <div class="calendar-grid" ng-class="{false: 'no-hover'}[pickdate]" ng-hide="panel.load">
+                    <div ng-class="{'no-hover': !day.showday || day.booked}" ng-repeat="day in month" class="datecontainer" ng-style="{'margin-left': calcOffset(day, $index)}"
                         track by $index>
                         <div class="datenumber" ng-class="{'day-selected': day.selected }" ng-click="selectDate(day)">
                             <% day.daydate %>
                         </div>
+                        <svg width="15" height="15" style="border:1px solid ;margin:0;" ng-show="day.booked">
+                            <circle cx="6" cy="6" r="4" fill="#f42f2c" />
+                            Sorry, your browser does not support inline SVG.
+                         </svg>
                     </div>
                 </div>
+
+                <div ng-show="panel.load">
+                    @include('component.spinner');
+                </div>
+
 
                 <a href="" class="mt-20 genric-btn primary radius" ng-click="changepage(0)" style="width:100%;font-weight:500;font-size:1em;">
                     Confirm Date</a>
             </form>
-            <form class="time-modal" ng-show="panel.position == 2" style="min-height:200px"  ng-class="{ 'change-left': panel.position == 2 && panel.animate}">          
-                    <button href class="genric-btn primary radius " ng-repeat="time in avatime" ng-click="gettime(time)"><% time.long %></button>                           
-                    <div ng-if="avatime.length < 0">
+
+
+            <form class="time-modal"  ng-show="panel.position == 2" style="min-height:200px"  ng-class="{ 'change-left': panel.position == 2 && panel.animate}">        
+                   
+                <button href class="genric-btn  radius" 
+                        ng-class="time.booked ?'dsb':'primary'" 
+                        ng-repeat="time in avatime" ng-click="gettime(time)">
+                        <% time.long %></button>
+                             
+                    <div ng-show="panel.timeload">
                     @include('component.spinner');
                     </div>
             </form>
@@ -166,7 +197,7 @@
 
 
 
-<section class="booking-body">
+<section class="booking-body" >
     <div class="container">
         <div class="row d-flex justify-content-center">
             <div class="col-lg-3 col-md-10  col-sm-12" style="border:1px solid red;">
@@ -175,7 +206,7 @@
                     <section class="info-user">
                     <img src="https://yt3.ggpht.com/-FpoBOVwSiE0/AAAAAAAAAAI/AAAAAAAAAAA/Yf-SnwkfdQ4/s88-c-k-no-mo-rj-c0xffffff/photo.jpg"
                         alt="">
-                    <p class="name">MyClark Youser</p>
+                    <p class="name">{{ $user_info['name'] }}</p>
                     </section>
 
                     <section class="user-progess">   
@@ -213,49 +244,52 @@
                 </div>
             </div> --}}
 
-            <div class="col-lg-8 col-md-10" ng-controller="DashboardController">
+            <div class="col-lg-8 col-md-10" >
 
                 <div class="x-body">
                     <h4>Booking</h4>
+                    <p><%Info%></p>
 
                     {{-- No Booking --}}
-                    <div class="no-data-body">
+                    
+                    
+                    <div class="no-data-body" ng-hide="panel.bookedInfo == true">
                         <p>You Have No Booking</p>
-                        <a href="#" class="genric-btn primary-border radius" ng-click="openmodal()">Book
+                        <a href="#" class="genric-btn primary-border radius" ng-click="togglemodal('i')">Book
                             A Table</a>
                     </div>
 
                     {{-- booking-info --}}
-                    {{-- <div class="body-info-book ">
+                    <div class="body-info-book " ng-show="panel.bookedInfo == true">
                         <div class="row">
                             <div class="info-box col-md-6 col-sm-12 mb-10">
                                 <p>Date</p>
-                                <p>12 January 2019</p>
+                                <p><%Info.Date_info.display%></p>
                             </div>
 
                             <div class="info-box col-md-6 col-sm-12 mb-10">
                                 <p>Time</p>
-                                <p>08:00 WIB</p>
+                                <p><%Info.Time_info.display%></p>
                             </div>
 
                             <div class="info-box col-md-6 col-sm-12 mb-10">
                                 <p>Number of People</p>
-                                <p>3 People</p>
+                                <p><%Info.People_info%> People</p>
                             </div>
                             <div class="info-box col-md-6 col-sm-12 mb-15">
                                 <p>Aditional Request</p>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum sint voluptatibus
-                                    nesciunt est inventore, asperiores libero nam sequi iure a quas aut repudiandae
-                                    numquam optio hic perspiciatis, vitae id culpa?</p>
+                                <p></p>
                             </div>
 
 
                             <div class="option-box col-md-12">
-                                <a href="#" class="genric-btn primary-border radius">Cancel Booking</a>
-                                <a href="#" class="genric-btn primary-border radius">Edit Booking</a>
+                                <a href="#" class="genric-btn primary-border radius" ng-click="togglemodal('c')">Cancel Booking</a>
+                                <a href="#" class="genric-btn primary-border radius" ng-click="togglemodal('i')">Edit Booking</a>
                             </div>
                         </div>
-                    </div> --}}
+                    </div>
+
+
                 </div>
 
                 <div class="x-body">
@@ -285,7 +319,7 @@
 
 
 </section>
-
+</div>
 
 @endsection
 
@@ -305,5 +339,9 @@
 <script src="js/jquery.sticky.js"></script>
 <script src="js/jquery.nice-select.min.js"></script>
 <script src="js/app.js"></script>
+<script>
+                ModuleDeclare
+                .constant("CSRF_TOKEN", '{{ csrf_token()}}');
+</script>
 <script src="js/controller/dashboard.controller.js"></script>
 @endsection
