@@ -7,7 +7,8 @@ use Illuminate\Support\Facades\Auth;
 
 
 class HomeController extends Controller
-{
+{   
+    protected $auth;
     public function dashboard()
     {   
         $auth=auth()->user();
@@ -17,5 +18,13 @@ class HomeController extends Controller
         ];
 
         return view('layouts.dashboard',['user_info' => $data]);
+    }
+
+    public function user_info(Request $request)
+    {
+        $auth=auth()->user();
+        
+
+        
     }
 }

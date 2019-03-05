@@ -1,7 +1,14 @@
 ModuleDeclare.controller('DashboardController', ['$scope','$timeout','$q','$http','CSRF_TOKEN',DashboardController]);
-
 function DashboardController($scope,$timeout,$q,$http,CSRF_TOKEN)
 {   
+
+
+                    $http.post('./booking',{'crfs':CSRF_TOKEN})
+                    .then(function successCallback(response) {
+                        console.log(response.data);
+                    });    
+
+
     $scope.Info={
         Date_info:{display:"Choose Your Date",dateformat:null},
         Time_info:{display:"Choose Your Time",time:null},
@@ -18,7 +25,8 @@ function DashboardController($scope,$timeout,$q,$http,CSRF_TOKEN)
         load:false,
         bookedInfo:false,
         trigger:null,
-        timeload:false
+        timeload:false,
+        loadcontent:false
     };
 
     $scope.Title=[
@@ -27,6 +35,11 @@ function DashboardController($scope,$timeout,$q,$http,CSRF_TOKEN)
         "Select Time",
         "Aditional Info"
     ];
+
+
+
+
+
 
         var formated=(m)=>{
             if(m.toString().length == 1)
@@ -106,6 +119,11 @@ function DashboardController($scope,$timeout,$q,$http,CSRF_TOKEN)
         },1000)
        }else
        {
+
+        $('#exampleModal').modal({
+            backdrop: 'static',
+            keyboard: false
+        })
                     // $http.post('./booking',{'crfs':CSRF_TOKEN,'data':$scope.Info})
                     // .then(function successCallback(response) {
                     //     $scope.panel.bookedInfo=true;

@@ -21,6 +21,7 @@
   <div class="mt-20 col-md-6">
     <input type="text" name="lname" ng-model="data.lname"
     placeholder="Lastname" 
+    
     required class="single-input">
     <p class="notify" ng-if="interacted(FormUser.lname)" ng-messages="FormUser.lname.$error">
         <span class="error" ng-message="required">Lastname Required</span> 
@@ -29,26 +30,29 @@
 
   <div class="mt-20 col-md-12">
     <input type="email" name="email" 
-    placeholder="Email"  ng-model="data.email" form="FormUser.email.$error" pattern="emailregex"
-    record-validator="email"   
+    placeholder="Email"  ng-model="data.email" form="FormUser.email.$error" pattern="emailregex" required
     class="single-input">
     <p class="notify" ng-if="interacted(FormUser.email)"    ng-messages="FormUser.email.$error">
           <span ng-message="record-loading">Checking Email ...</span>
           <span class="success" ng-message="sucess">Email Available</span>
-          <span  ng-message="record-taken" >Sorry, but this is already taken</span>   
+          <span   ng-message="record-taken" >Sorry, but this is already taken</span>   
           <span class="error" ng-message="required">Email Required</span> 
           <span class="error" ng-message="pattern">Not Valid Email</span>
     </p>
   </div>
 
   <div class="mt-20 col-md-12">
-    <input type="text" name="phnnumber" phonenumber
-    placeholder="Phone Number" required ng-model="data.phnnumber"
+    <input type="text" name="phnnumber" phonenumber required 
+    placeholder="Indonesian Mobile Phone Number" required ng-model="data.phnnumber" 
     class="single-input">
-    <p class="notify">
-           <span class="error">Phone Number Required</span> 
+    <p class="notify" ng-if="interacted(FormUser.phnnumber)" ng-messages="FormUser.phnnumber.$error">
+           <span class="error" ng-message="required">Phone Number Required</span>
+           <span  ng-message="record-loading">Checking Phone Number...</span>
+           <span  class="error" ng-message="pattern">This is not Valid Phone Number</span>
+           <span  class="success" ng-message="sucess">Phone Number Available</span>
+           <span   ng-message="record-taken" >Sorry, but this is already taken</span>  
     </p>
-</div>
+ </div>
 
 
 <div class="mt-20 col-md-6">

@@ -7,7 +7,7 @@ function Controller($scope,$timeout,$q,$http,CSRF_TOKEN)
     fname:"",
     lname:"",
     email:"",
-    phnnumber:"08645678765",
+    phnnumber:"",
     password_confirm:"",
     password:"",
     accepted:false,
@@ -83,7 +83,7 @@ function Controller($scope,$timeout,$q,$http,CSRF_TOKEN)
         $scope.input_stat.accepted.error=Object.keys(field.$error).length;
       }
 
-      console.log(field);
+      // console.log(field);
       return $scope.submitted || field.$dirty;
     };
 

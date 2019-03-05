@@ -97,6 +97,7 @@ class MenuController extends Controller
         }
         return $result;
     }
+    
     private function check_param($result)
     {   
         if(isset($_GET['search']) && strlen($_GET['search'])>0 && $_GET['search'])

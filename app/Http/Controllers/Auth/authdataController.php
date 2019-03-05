@@ -18,7 +18,7 @@ class authdataController extends Controller
         if (User::where('email', '=', $request->get('email'))->count() > 0) {
             return response()->json([
                 'status'=>false
-            ], 200);
+            ], 500);
         }else{
             return response()->json([
                 'status'=>true
@@ -28,11 +28,10 @@ class authdataController extends Controller
 
     public function verify_phnum(Request $request)
     {
-        
         if (User::where('phnnumber', '=', $request->get('phnum'))->count() > 0) {
             return response()->json([
                 'status'=>false
-            ], 200);
+            ], 500);
         }else{
             return response()->json([
                 'status'=>true

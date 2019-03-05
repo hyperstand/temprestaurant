@@ -22,6 +22,15 @@
 @section('component')
 @include('component.ifloginnav')
 <div ng-controller="DashboardController">
+
+
+        <div id="loader-wrapper">
+                <div id="loader">
+                        <img src="{{asset('img/logo.png')}}" alt="" title="" />
+                        <p>Loading..</p>
+                </div>             
+        </div>
+
 {{-- modal verify --}}
 <div class="modal fade"  id="confirmmodal" tabindex="-1" role="dialog"
     aria-labelledby="exampleModalLabel" aria-hidden="true">
